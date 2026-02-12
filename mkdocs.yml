@@ -1,0 +1,60 @@
+site_name: My Archives
+site_url: https://wiki.yourdomain.com
+site_author: Your Name
+
+theme:
+  name: material
+  language: zh
+  # 恢复标准的日间/夜间切换功能
+  palette: 
+    # 默认：浅色模式 (Default)
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # 切换：深色模式 (Slate)
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  
+  # 保持好用的功能
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - 首页: index.md
+  - 物理笔记:
+    - 量子力学: physics/quantum.md
+    - 电磁学: physics/electromagnetism.md
+  - 编程算法:
+    - 数据结构: coding/ds.md
+    - 算法笔记: coding/algo.md
