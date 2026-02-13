@@ -4,6 +4,8 @@ site_author: Your Name
 
 theme:
   name: material
+  icon: 
+    logo: material/notebook-outline
   custom_dir: overrides
   language: zh
   # 恢复标准的日间/夜间切换功能
@@ -50,6 +52,12 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true # 开启自定义复选框样式
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - overrides/.icons  # 允许你自己上传图标
 
 extra_javascript:
   - javascripts/mathjax.js
