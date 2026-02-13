@@ -4,24 +4,26 @@ site_author: Your Name
 
 theme:
   name: material
+  custom_dir: overrides
   language: zh
   # 恢复标准的日间/夜间切换功能
-  palette: 
-    # 默认：浅色模式 (Default)
+  font: false 
+  
+  palette:
+    # 切换按钮配置建议保留
     - scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-    # 切换：深色模式 (Slate)
     - scheme: slate
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
-  
+
   # 保持好用的功能
   features:
     - navigation.tabs
@@ -33,17 +35,21 @@ theme:
 
 plugins:
   - search
+  - statistics: # <--- 启用统计插件，否则 {{ pages }} 会直接显示字符
+      enabled: true
 
+extra_css:
+  - stylesheets/extra.css
+
+# 【重点 3】Markdown 扩展支持
 markdown_extensions:
   - admonition
-  - pymdownx.details
+  - attr_list         # 必须开启！否则无法使用 .card 等自定义 CSS 类
+  - md_in_html        # 允许在 HTML 标签中写 Markdown，配合 Card 使用
+  - pymdownx.details  # 折叠块
   - pymdownx.superfences
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.arithmatex:
-      generic: true
+  - pymdownx.tasklist:
+      custom_checkbox: true # 开启自定义复选框样式
 
 extra_javascript:
   - javascripts/mathjax.js

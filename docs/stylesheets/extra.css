@@ -1,76 +1,175 @@
 /* docs/stylesheets/extra.css */
 
-/* 1. 引入字体：Cinzel Decorative (标题) 和 Inter (正文) */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap');
+/* ==========================================================================
+   1. 字体资源引入 (使用 TonyCrane 的 CDN 或兼容源)
+ /* ==========================================================================
+   1. 字体资源引入 (替换为 Google Fonts 和 jsDelivr 稳定源)
+   ========================================================================== */
+/* 英文代码字体: JetBrains Mono */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap');
+/* 中文字体: 霞鹜文楷 (LXGW WenKai Screen) */
+@import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-web/style.css');
 
+/* ==========================================================================
+   2. 全局变量与配色核心
+   ... (下面保持不变)
+*/
+/* ==========================================================================
+   2. 全局变量与配色核心 (源自 custom.css)
+   ========================================================================== */
 :root {
-  /* 定义核心黑色 */
-  --md-default-bg-color: #000000;
-  --md-default-bg-color--light: #0a0a0a;
+  /* 核心修改：英文用 JetBrains Mono，中文用 霞鹜文楷 */
+  /* 这种搭配非常有 "黑客/工程师" 的笔记感 */
+  --md-text-font: "JetBrains Mono", "LXGW WenKai Screen", sans-serif;
+  --md-code-font: "JetBrains Mono", monospace;
 }
 
-/* === 2. 字体精细化设置 === */
-
-/* 左上角网站标题：使用神秘字体 */
-.md-header__title {
-  font-family: 'Cinzel Decorative', cursive !important;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  font-size: 1.1rem;
+/* 字体大小微调，让阅读更舒适 */
+html {
+  font-size: 120%; /* 保持默认，或者像原作者一样设为 137.5% 增大字号，这里建议先默认，太大了可以自己改 */
+}
+@media screen and (min-width: 960px) {
+  html { font-size: 137.5%; } /* 稍微大一点点 */
 }
 
-/* 全局正文：使用 Inter (干净、高级) */
-body, .md-typeset {
-  font-family: 'Inter', sans-serif !important;
-  /* 稍微收紧字间距，提升精致感 */
-  letter-spacing: -0.01em; 
+/* 标题加粗 */
+.md-typeset h1, .md-typeset h2, .md-typeset h3 {
+  font-weight: 600;
+  letter-spacing: 0;
 }
 
-/* 代码块：JetBrains Mono */
-code, pre {
-  font-family: 'JetBrains Mono', monospace !important;
+/* === 配色系统重构 === */
+
+/* 浅色模式 (Default) - 更加清爽的白/灰搭配 */
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: #efefef;
+  --md-primary-bg-color: #000000;
+  --md-typeset-color: #333333; /* 正文颜色 */
+  --md-typeset-a-color: #555555; /* 链接颜色 */
+  
+  --md-footer-bg-color: #efefef;
+  --md-footer-fg-color: #000000;
+  
+  --md-code-bg-color: #fafafa;
+  --md-code-fg-color: var(--md-typeset-color);
+  
+  /* 自定义变量：目录插件边框等 */
+  --toc-plugin-title-bg: rgba(0, 0, 0, 0.05);
+  --toc-plugin-button-hover: rgba(0, 0, 0, 0.1);
+  --toc-plugin-border: rgba(0, 0, 0, 0.15);
 }
 
-/* === 3. 去除“丑的东西” (导航栏背景) === */
+/* 深色模式 (Slate) */
+[data-md-color-scheme="slate"] {
+  /* 1. 核心背景色 (保持你喜欢的灰色底) */
+  --md-default-bg-color: #161616;
+  --md-default-bg-color--light: #161616;
+  
+  /* 2. 顶部导航栏 (Header) 颜色 */
+  /* 【关键修改】把它设为纯黑 #000000，就能和 Tabs 融为一体实现 "Black-Black" */
+  --md-primary-fg-color: #000000; 
+  
+  /* 3. 字体颜色 (保持高对比度) */
+  --md-default-fg-color: rgba(255,255,255,0.90);
+  
+  /* 4. 代码块和侧边栏背景 (稍微亮一点的灰，形成层次) */
+  --md-code-bg-color: #1d1d1d; 
+  
+  /* 5. 链接颜色 (灰白) */
+  --md-typeset-a-color: #d3d3d3; 
 
-/* 顶部 Header：纯黑，去掉阴影 */
-.md-header {
+  /* 自定义变量：目录插件边框等 */
+  --toc-plugin-title-bg: rgba(255, 255, 255, 0.05);
+  --toc-plugin-button-hover: rgba(255, 255, 255, 0.1);
+  --toc-plugin-border: rgba(255, 255, 255, 0.15);
+}
+
+/* 强制让 Header 和 Tabs 变成纯黑，防止有阴影或渐变干扰 */
+[data-md-color-scheme="slate"] .md-header,
+[data-md-color-scheme="slate"] .md-tabs {
   background-color: #000000 !important;
-  box-shadow: none !important;
-  border-bottom: 1px solid rgba(255,255,255,0.1); /* 留一条极细的线划分区域 */
 }
 
-/* 导航选项卡 (首页/目录那一行)：背景透明！ */
-.md-tabs {
-  background-color: transparent !important;
-  border-bottom: none !important;
-}
-
-/* 选中状态的文字颜色：高亮白 */
-.md-tabs__link--active, .md-tabs__link:hover {
-  color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-/* 普通状态文字：灰色 */
-.md-tabs__link {
-  color: rgba(255, 255, 255, 0.6) !important;
-}
-
-/* === 4. 配色细节修正 === */
-
-/* 深色模式下，侧边栏背景也设为纯黑 */
+/* 修正深色模式下侧边栏背景 */
 [data-md-color-scheme="slate"] .md-sidebar {
-  background-color: #000000;
+  background-color: var(--md-default-bg-color);
+}
+[data-md-color-scheme="slate"] .md-header {
+  background-color: var(--md-default-bg-color);
 }
 
-/* 调整正文链接颜色，不再用默认的蓝色，改用白色加下划线 */
-.md-typeset a {
-  color: inherit;
-  text-decoration: underline;
-  text-decoration-color: rgba(255,255,255,0.3);
+/* 搜索框美化 */
+input.md-search__input { background-color: #fff; }
+[data-md-color-scheme="slate"] input.md-search__input { background-color: #000; }
+
+/* ==========================================================================
+   3. 卡片组件 (Card) - 源自 card.css
+   ========================================================================== */
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #FEFEFE;
+    background-clip: border-box;
+    border: 0.5px solid #606060;
+    border-radius: .25rem;
+    margin-bottom: 1em;
+    transition: transform 0.2s;
 }
-.md-typeset a:hover {
-  color: #ffffff;
-  text-decoration-color: #ffffff;
+
+[data-md-color-scheme="slate"] .card {
+    background-color: #181818;
+    border: 0.5px solid #606060;
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card-body {
+    flex: 1 1 auto;
+    padding: 1rem;
+}
+
+.card-header {
+    padding: 0.7rem 1.5rem 0.25rem;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+[data-md-color-scheme="slate"] .card-header {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ==========================================================================
+   4. 任务列表美化 (Tasklist) - 源自 tasklist.css
+   ========================================================================== */
+.markdown-body .task-list-item { list-style-type: none !important; }
+.markdown-body .task-list-item input[type="checkbox"] { margin: 0 4px 0.25em -20px; vertical-align: middle; }
+
+/* 复选框美化为绿色对勾 */
+.markdown-body .task-list-control input[type="checkbox"]:checked + .task-list-indicator::before {
+  content: "✔";
+  color: #1EBB52;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   5. 目录与侧边栏增强 (TOC Extra) - 源自 toc_extra.css
+   ========================================================================== */
+/* 给右侧目录增加边框和背景 */
+.md-sidebar--secondary .md-nav {
+    border-radius: 6px;
+}
+
+/* 笔记标签样式 (可选，用于给特定链接加标签) */
+.note-tag {
+    border: 1px solid #e6ad5b;
+    color: #e6ad5b;
+    border-radius: 0.9em;
+    font-size: 0.9em;
+    padding: 0px 8px;
 }
