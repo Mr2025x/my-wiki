@@ -1,4 +1,4 @@
-site_name: My Archives
+site_name: 痞老板的notebook
 site_url: https://wiki.yourdomain.com
 site_author: Your Name
 
@@ -65,10 +65,10 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - 首页: index.md
-  - 物理笔记:
+  - Home: index.md
+  - Physics:
     - 量子力学: physics/quantum.md
     - 电磁学: physics/electromagnetism.md
-  - 编程算法:
+  - Computer Science:
     - 数据结构: coding/ds.md
     - 算法笔记: coding/algo.md
