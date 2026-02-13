@@ -5,4 +5,3 @@ mkdocs-encryptcontent-plugin
 mkdocs-git-revision-date-localized-plugin
 mkdocs-changelog-plugin
 mkdocs-statistics-plugin
-mkdocs-heti
