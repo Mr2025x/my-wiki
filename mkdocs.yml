@@ -68,3 +68,28 @@ nav:
   - Computer Science:
     - 数据结构: coding/ds.md
     - 算法笔记: coding/algo.md
+
+repo_url: https://github.com/Mr2025x/my-wiki  # 加上这行激活右上角区域
+
+extra:
+  social:
+    
+    # 2. 导航键 (指南针图标)
+    - icon: fontawesome/solid/compass
+      link: https://plankton2005.best # 【请替换为你真实的 Navigation 链接】
+      name: 导航 (Navigation)
+      
+    # 3. Blog 键 (博客图标)
+    - icon: fontawesome/solid/blog
+      link: https://blog.plankton2005.best # 【请替换为你真实的 Blog 链接】
+      name: 博客 (Blog)
+      
+    # 4. 友链键 (人群图标)
+    - icon: fontawesome/solid/user-group
+      link: https://plankton2005.best/friends # 【请替换为真实的友链地址】
+      name: 友链 (Friends)
+      
+    # 5. 留言板键 (留言气泡图标)
+    - icon: fontawesome/solid/comments
+      link: https://plankton2005.best/guestbook # 【请替换为真实的留言板地址】
+      name: 留言板 (Guestbook)
