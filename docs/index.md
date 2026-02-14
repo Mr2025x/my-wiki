@@ -46,7 +46,7 @@ statistics: true
 </style>
 
   <div style="
-    background: rgba(0, 0, 0, 0.45);
+    background: rgba(0, 0, 0, 0.30);
     backdrop-filter: blur(10px);
     border-left: 5px solid #fff;
     /* 【在这里调高度】：修改 2.5rem 即可 */
@@ -65,7 +65,7 @@ statistics: true
     </h2>
     
     <p style="margin: 0 0 0.8rem 0; opacity: 0.9; line-height: 1.7; font-size: 1.1rem;">
-      系统已上线。欢迎访问 <strong>My Archives</strong>。
+      叮！<strong>痞老板的Notebook</strong> 已上线。
     </p>
     <p style="margin: 0; opacity: 0.7; font-size: 0.95rem; font-family: 'JetBrains Mono', monospace;">
       $ 运行环境: 物理定律 & 计算机逻辑<br>
@@ -75,7 +75,7 @@ statistics: true
 
   <script>
     // 你可以在这个数组里加多句话，它会循环打出来！
-    const textArray = ["> Hello, World", "> Welcome to my Wiki", "> Talk is cheap. Show me the code."];
+    const textArray = ["> Hello, World", "> Welcome to my Notebook", "> Talk is cheap. Show me the code.", "> #include earth-online"];
     let textIndex = 0;
     let charIndex = 0;
     let isDeleting = false;

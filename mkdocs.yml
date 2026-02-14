@@ -12,19 +12,31 @@ theme:
   font: false 
   
   palette:
-    # 切换按钮配置建议保留
-    - scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - scheme: slate
+    # 1. 自动跟随系统 (默认进入网页时的状态)
+    # 3. 强制深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-4
-        name: Switch to light mode
+        name: 切换到跟随系统
+
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: 切换到浅色模式
+    
+    # 2. 强制浅色模式
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: 切换到深色模式
+        
+    
 
   # 保持好用的功能
   features:
@@ -50,6 +62,8 @@ markdown_extensions:
   - md_in_html        # 允许在 HTML 标签中写 Markdown，配合 Card 使用
   - pymdownx.details  # 折叠块
   - pymdownx.superfences
+  - pymdownx.arithmatex:
+      generic: true
   - pymdownx.tasklist:
       custom_checkbox: true # 开启自定义复选框样式
   - pymdownx.emoji:
@@ -58,6 +72,7 @@ markdown_extensions:
       options:
         custom_icons:
           - overrides/.icons  # 允许你自己上传图标
+  
 
 extra_javascript:
   - javascripts/mathjax.js
