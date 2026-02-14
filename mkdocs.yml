@@ -12,32 +12,21 @@ theme:
   font: false 
   
   palette:
-    # 1. 自动跟随系统 (默认进入网页时的状态)
-    # 3. 强制深色模式
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      primary: indigo
+    # 1. 默认深色模式 (排在第一位，所以一打开网页就是夜间模式)
+    - scheme: slate
+      primary: indigo   # 你的主色调，可以自己改
       accent: indigo
       toggle:
         icon: material/brightness-4
-        name: 切换到跟随系统
-
-    - media: "(prefers-color-scheme)"
-      toggle:
-        icon: material/brightness-auto
         name: 切换到浅色模式
-    
-    # 2. 强制浅色模式
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
+        
+    # 2. 浅色模式
+    - scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
         name: 切换到深色模式
-        
-    
-
   # 保持好用的功能
   features:
     - navigation.tabs
