@@ -71,7 +71,8 @@ statistics: false
 
   <div style="
     display: grid; 
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    /* 【核心修复1】改为 auto-fill，确保无论剩下几个卡片，宽度都绝对统一 */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
     gap: 2rem; 
     width: 100%; 
     max-width: 1100px; 
@@ -79,8 +80,9 @@ statistics: false
     font-family: 'JetBrains Mono', monospace;
   ">
 
-    <a href="physics/quantum/" style="text-decoration: none; color: inherit;">
+    <a href="physics/quantum/" style="text-decoration: none; color: inherit; display: flex;">
       <div style="
+        width: 100%;
         background: rgba(15, 20, 25, 0.85); 
         backdrop-filter: blur(8px); 
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -88,7 +90,6 @@ statistics: false
         padding: 2rem; 
         border-radius: 8px; 
         transition: all 0.3s ease;
-        min-height: 200px;
         display: flex; 
         flex-direction: column;
       " onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(79, 195, 247, 0.4)'; this.style.boxShadow='0 8px 25px rgba(79, 195, 247, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.boxShadow='none'">
@@ -108,8 +109,9 @@ statistics: false
       </div>
     </a>
 
-    <a href="coding/ds/" style="text-decoration: none; color: inherit;">
+    <a href="coding/ds/" style="text-decoration: none; color: inherit; display: flex;">
       <div style="
+        width: 100%;
         background: rgba(15, 20, 25, 0.85); 
         backdrop-filter: blur(8px); 
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -117,7 +119,6 @@ statistics: false
         padding: 2rem; 
         border-radius: 8px; 
         transition: all 0.3s ease;
-        min-height: 200px;
         display: flex; 
         flex-direction: column;
       " onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(105, 240, 174, 0.4)'; this.style.boxShadow='0 8px 25px rgba(105, 240, 174, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.boxShadow='none'">
@@ -137,8 +138,9 @@ statistics: false
       </div>
     </a>
 
-    <a href="changelog/" style="text-decoration: none; color: inherit;">
+    <a href="changelog/" style="text-decoration: none; color: inherit; display: flex;">
       <div style="
+        width: 100%;
         background: rgba(15, 20, 25, 0.85); 
         backdrop-filter: blur(8px); 
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -146,7 +148,6 @@ statistics: false
         padding: 2rem; 
         border-radius: 8px; 
         transition: all 0.3s ease;
-        min-height: 200px;
         display: flex; 
         flex-direction: column;
       " onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(255, 213, 79, 0.4)'; this.style.boxShadow='0 8px 25px rgba(255, 213, 79, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.boxShadow='none'">
@@ -166,8 +167,9 @@ statistics: false
       </div>
     </a>
 
-    <a href="notes/reading/" style="text-decoration: none; color: inherit;">
+    <a href="notes/reading/" style="text-decoration: none; color: inherit; display: flex;">
       <div style="
+        width: 100%;
         background: rgba(15, 20, 25, 0.85); 
         backdrop-filter: blur(8px); 
         border: 1px solid rgba(255, 255, 255, 0.08);
@@ -175,7 +177,6 @@ statistics: false
         padding: 2rem; 
         border-radius: 8px; 
         transition: all 0.3s ease;
-        min-height: 200px;
         display: flex; 
         flex-direction: column;
       " onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(179, 157, 219, 0.4)'; this.style.boxShadow='0 8px 25px rgba(179, 157, 219, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.boxShadow='none'">
@@ -191,6 +192,35 @@ statistics: false
         
         <div style="font-size: 0.8rem; color: #b39ddb; margin-top: 1rem; font-weight: bold;">
           [ INFO ] Reading...
+        </div>
+      </div>
+    </a>
+
+    <a href="friends/" style="text-decoration: none; color: inherit; display: flex;">
+      <div style="
+        width: 100%;
+        background: rgba(15, 20, 25, 0.85); 
+        backdrop-filter: blur(8px); 
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-left: 4px solid #ff8a65; 
+        padding: 2rem; 
+        border-radius: 8px; 
+        transition: all 0.3s ease;
+        display: flex; 
+        flex-direction: column;
+      " onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='rgba(255, 138, 101, 0.4)'; this.style.boxShadow='0 8px 25px rgba(255, 138, 101, 0.15)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255, 255, 255, 0.08)'; this.style.boxShadow='none'">
+        
+        <div style="font-size: 0.85rem; color: #666; margin-bottom: 1.2rem; border-bottom: 1px dashed #333; padding-bottom: 0.8rem;">
+          <span style="color: #ff8a65;">root@archives</span>:~/network$ ping friends
+        </div>
+        
+        <h3 style="margin: 0; font-size: 1.5rem; font-weight: 700; color: #fff;">友情链接</h3>
+        <p style="opacity: 0.7; margin-top: 1rem; font-size: 0.9rem; line-height: 1.6; flex-grow: 1; color: #aaa; font-family: sans-serif;">
+          结识更多志同道合的伙伴
+        </p>
+        
+        <div style="font-size: 0.8rem; color: #ff8a65; margin-top: 1rem; font-weight: bold;">
+          [ 200 ] Connection
         </div>
       </div>
     </a>

@@ -68,6 +68,7 @@ nav:
   - Computer Science:
     - 数据结构: coding/ds.md
     - 算法笔记: coding/algo.md
+  - Friends: friends.md
 
 repo_url: https://github.com/Mr2025x/my-wiki  # 加上这行激活右上角区域
 

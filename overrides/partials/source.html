@@ -1,42 +1,49 @@
-<div style="display: flex; align-items: center; gap: 16px; padding-left: 1rem;">
+<div style="display: flex; align-items: center; gap: 18px; margin-left: 2rem;">
   
-  <a href="https://你的主页域名.com" title="首页 (Home)" class="custom-top-icon">
-    <span class="twemoji">{% include ".icons/fontawesome/solid/house.svg" %}</span>
-  </a>
-  
-  <a href="https://你的导航页域名.com" title="导航 (Navigation)" class="custom-top-icon">
-    <span class="twemoji">{% include ".icons/fontawesome/solid/compass.svg" %}</span>
+  <a href="https://plankton2005.best" title="导航" class="custom-top-icon">
+    <div class="md-icon">{% include ".icons/fontawesome/solid/compass.svg" %}</div>
   </a>
 
-  <a href="https://你的博客域名.com" title="博客 (Blog)" class="custom-top-icon">
-    <span class="twemoji">{% include ".icons/fontawesome/solid/blog.svg" %}</span>
+  <div style="width: 1px; height: 18px; background-color: var(--md-header-fg-color, #fff); opacity: 0.2; margin: 0 2px;"></div>
+
+  <a href="https://blog.plankton2005.best" title="博客" class="custom-top-icon">
+    <div class="md-icon">{% include ".icons/fontawesome/solid/blog.svg" %}</div>
   </a>
 
-  <a href="https://你的博客域名.com/friends" title="友链 (Friends)" class="custom-top-icon">
-    <span class="twemoji">{% include ".icons/fontawesome/solid/users.svg" %}</span>
-  </a>
+  <div style="width: 1px; height: 18px; background-color: var(--md-header-fg-color, #fff); opacity: 0.2; margin: 0 2px;"></div>
 
-  <a href="https://你的博客域名.com/guestbook" title="留言板 (Guestbook)" class="custom-top-icon">
-    <span class="twemoji">{% include ".icons/fontawesome/solid/comments.svg" %}</span>
+  <a href="/friends/" title="友链 (Friends)" class="custom-top-icon">
+    <div class="md-icon">{% include ".icons/fontawesome/solid/users.svg" %}</div>
+  </a>
+  <div style="width: 1px; height: 18px; background-color: var(--md-header-fg-color, #fff); opacity: 0.2; margin: 0 2px;"></div>
+
+  <a href="https://github.com/Mr2025x" title="我的 GitHub" target="_blank" class="custom-top-icon">
+    <div class="md-icon">{% include ".icons/fontawesome/brands/github.svg" %}</div>
   </a>
 
 </div>
+
 <style>
   .custom-top-icon {
-    /* 读取顶栏专属颜色变量，如果读不到就默认用白色兜底 */
+    /* 读取顶栏专属颜色变量 */
     color: var(--md-header-fg-color, #ffffff); 
-    opacity: 0.7; /* 常态下 70% 透明度，和旁边的搜索框图标保持一致的手感 */
-    width: 22px;
-    height: 22px;
-    transition: all 0.2s ease-in-out;
+    opacity: 0.65; /* 稍微调低默认透明度，让顶栏不喧宾夺主 */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); /* 更平滑顺弹的动画曲线 */
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
+  /* 调整图标尺寸：稍微改小一点，告别拥挤感 */
+  .custom-top-icon .md-icon {
+    width: 19px;
+    height: 19px;
+  }
+
   .custom-top-icon:hover {
-    opacity: 1; /* 鼠标放上去时，完全点亮 */
-    /* 悬停颜色：你可以用 var(--md-accent-fg-color) 跟随主题，
-       或者像这里直接写死一个极客风的亮蓝色 #4fc3f7 */
-    color: #4fc3f7; 
-    transform: scale(1.15); /* 稍微放大一点 */
+    opacity: 1; 
+    color: #4fc3f7; /* 悬停时的科技蓝 */
+    /* 重点优化：轻微上浮 + 放大，显得非常轻盈 */
+    transform: translateY(-2px) scale(1.15); 
   }
 </style>
