@@ -31,6 +31,90 @@ statistics: true
   min-height: 80vh; 
   width: 100%;
 ">
+<style>
+    /* 闪烁的光标动画 */
+    .blinking-cursor {
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      color: #fff;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+</style>
+
+  <div style="
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(10px);
+    border-left: 5px solid #fff;
+    /* 【在这里调高度】：修改 2.5rem 即可 */
+    padding: 3.0rem 3rem; 
+    border-radius: 0 16px 16px 0;
+    margin-bottom: 4rem;
+    /* 【在这里调宽度】：修改 800px 即可 */
+    max-width: 900px; 
+    width: 90%;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  ">
+    
+    <h2 style="margin: 0 0 1rem 0; font-size: 1.8rem; font-family: 'JetBrains Mono', monospace; font-weight: 700; min-height: 2.2rem;">
+      <span id="typing-text"></span><span class="blinking-cursor">_</span>
+    </h2>
+    
+    <p style="margin: 0 0 0.8rem 0; opacity: 0.9; line-height: 1.7; font-size: 1.1rem;">
+      系统已上线。欢迎访问 <strong>My Archives</strong>。
+    </p>
+    <p style="margin: 0; opacity: 0.7; font-size: 0.95rem; font-family: 'JetBrains Mono', monospace;">
+      $ 运行环境: 物理定律 & 计算机逻辑<br>
+      $ 状态: 持续学习中...
+    </p>
+  </div>
+
+  <script>
+    // 你可以在这个数组里加多句话，它会循环打出来！
+    const textArray = ["> Hello, World", "> Welcome to my Wiki", "> Talk is cheap. Show me the code."];
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    function typeEffect() {
+      const currentText = textArray[textIndex];
+      const typingElement = document.getElementById("typing-text");
+      if (!typingElement) return;
+
+      // 截取当前需要显示的字符
+      if (isDeleting) {
+        typingElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      // 控制打字和删除的速度 (毫秒)
+      let typeSpeed = isDeleting ? 50 : 120; 
+
+      // 如果一句话打完了，停顿两秒再开始删除
+      if (!isDeleting && charIndex === currentText.length) {
+        typeSpeed = 2000; 
+        isDeleting = true;
+      }
+      // 如果一句话删完了，切换到下一句
+      else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % textArray.length; // 循环切换到下一句
+        typeSpeed = 400; // 开始打下一句前的停顿
+      }
+
+      setTimeout(typeEffect, typeSpeed);
+    }
+
+    // 页面加载完毕后，延迟 800 毫秒启动打字机
+    setTimeout(typeEffect, 800);
+  </script>
 
   <div style="
     display: grid; 
@@ -39,7 +123,7 @@ statistics: true
     width: 100%; 
     max-width: 1250px; /*稍微加宽一点，让三张卡片排布更松弛*/
     padding: 0 1rem;
-    min-height: 280px;
+    min-height: 200px;
   ">
 
     <a href="physics/quantum/" style="text-decoration: none; color: inherit;">
@@ -149,6 +233,7 @@ statistics: true
         <h3 class="home-card-title">新卡片</h3>
       </div>
     </a>
+    
   </div>
 
   <div style="
